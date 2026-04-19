@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gajendra Sharma | AI Engineer + Trainer</title>
+  <meta name="description" content="AI Engineer and GenAI Trainer. RAG, Agentic AI, LLM Systems. 300+ hours delivered. Available for training, workshops, and freelance projects." />
+
+  <!-- ============================================================
+       FONTS
+       Sora: headings - geometric, technical-feeling, distinctive
+       Inter: body - maximum readability at all sizes
+       JetBrains Mono: stack labels and code snippets
+       ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES (Brand Tokens)
+       Change colors here and they update everywhere on the page.
+       ============================================================ */
+    :root {
+      --bg:            #FFFFFF;
+      --surface:       #F8F9FA;
+      --surface-2:     #F1F5F9;
+      --dark:          #1A1A2E;   /* charcoal - matches banner and brochure */
+      --teal:          #00B4D8;   /* primary accent */
+      --teal-dark:     #0077A8;
+      --teal-light:    rgba(0, 180, 216, 0.08);
+      --gold:          #F4A261;   /* highlight - numbers, labels, hover states */
+      --gold-light:    rgba(244, 162, 97, 0.10);
+      --text:          #0F172A;
+      --text-2:        #475569;
+      --text-3:        #94A3B8;
+      --border:        #E2E8F0;
+      --border-dark:   #CBD5E1;
+
+      --font-head:     'Sora', sans-serif;
+      --font-body:     'Inter', sans-serif;
+      --font-mono:     'JetBrains Mono', monospace;
+
+      --radius:        10px;
+      --radius-lg:     16px;
+      --shadow:        0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05);
+      --shadow-hover:  0 4px 12px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.08);
+      --transition:    0.2s ease;
+    }
+
+    /* ============================================================
+       RESET AND BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* Utility: content container */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Utility: section spacing */
+    .section { padding: 80px 0; }
+    .section-alt { background: var(--surface); }
+
+    /* Utility: section label (small caps above headings) */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+
+    /* Utility: section heading */
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--text-2);
+      max-width: 560px;
+      line-height: 1.65;
+    }
+
+    .section-header { margin-bottom: 48px; }
+
+    /* Gold underline accent on headings */
+    .section-title span {
+      position: relative;
+    }
+    .section-title span::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 100%; height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    /* ============================================================
+       NAVIGATION
+       Sticky top nav with logo left, links right.
+       On scroll, a subtle shadow appears (via JS class toggle).
+       ============================================================ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow var(--transition);
+    }
+    .nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--dark);
+      letter-spacing: -0.3px;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-2);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--teal); }
+
+    /* CTA button in nav */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: none;
+    }
+    .btn-primary {
+      background: var(--dark);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #0f1525; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--dark);
+      border: 1.5px solid var(--border-dark);
+    }
+    .btn-outline:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+    .btn-teal {
+      background: var(--teal);
+      color: #fff;
+    }
+    .btn-teal:hover { background: var(--teal-dark); transform: translateY(-1px); }
+
+
+    /* ============================================================
+       SECTION: HERO
+       Two columns: left = text + CTAs, right = stats card
+       ============================================================ */
+    .hero {
+      padding: 88px 0 72px;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle background grid texture */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    /* Teal glow top-right */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,180,216,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 56px;
+      align-items: center;
+    }
+
+    /* Small badge above headline */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      background: var(--teal-light);
+      border: 1px solid rgba(0,180,216,0.25);
+      border-radius: 100px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--teal-dark);
+      margin-bottom: 20px;
+      font-family: var(--font-mono);
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-name {
+      font-family: var(--font-head);
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.08;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .hero-role {
+      font-family: var(--font-head);
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 20px;
+      letter-spacing: -0.3px;
+    }
+
+    .hero-desc {
+      font-size: 16.5px;
+      color: var(--text-2);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 32px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Social links row */
+    .hero-socials {
+      display: flex;
+      gap: 20px;
+      margin-top: 28px;
+      align-items: center;
+    }
+    .hero-socials a {
+      font-size: 13px;
+      color: var(--text-3);
+      font-weight: 500;
+      transition: color var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .hero-socials a:hover { color: var(--teal); }
+
+    /* Right side: stats card */
+    .hero-card {
+      background: var(--dark);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      color: #fff;
+    }
+    .hero-card-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 24px;
+    }
+    .stat-item {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .stat-item:first-of-type { padding-top: 0; }
+    .stat-number {
+      font-family: var(--font-head);
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.4;
+    }
+
+
+    /* ============================================================
+       SECTION: PROOF STRIP
+       A thin horizontal bar of key metrics between hero and projects.
+       ============================================================ */
+    .proof-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .proof-strip-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .proof-item {
+      text-align: center;
+      flex: 1;
+    }
+    .proof-item + .proof-item {
+      border-left: 1px solid var(--border);
+    }
+    .proof-num {
+      font-family: var(--font-head);
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .proof-num span { color: var(--teal); }
+    .proof-desc {
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.4;
+    }
+
+
+    /* ============================================================
+       SECTION: PROJECTS
+       Cards in a 2-column grid. Each card has: problem, outcome
+       number (gold), stack tags (monospace), and a GitHub link.
+       ============================================================ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: var(--teal);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover {
+      border-color: var(--border-dark);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+    .project-card:hover::before { transform: scaleX(1); }
+
+    /* Outcome number - the hero stat of each card */
+    .project-metric {
+      font-family: var(--font-head);
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .project-metric-label {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-bottom: 16px;
+    }
+    .project-title {
+      font-family: var(--font-head);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .project-problem {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    /* "What broke" note - the practitioner credibility signal */
+    .project-note {
+      font-size: 13px;
+      color: var(--text-2);
+      background: var(--gold-light);
+      border-left: 3px solid var(--gold);
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .project-note strong {
+      color: var(--dark);
+      font-size: 11px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    /* Stack tags */
+    .stack-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .stack-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--teal-dark);
+      background: var(--teal-light);
+      border: 1px solid rgba(0,180,216,0.2);
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--teal);
+      transition: gap var(--transition);
+    }
+    .project-link:hover { gap: 8px; }
+
+
+    /* ============================================================
+       SECTION: WHAT I TEACH
+       Three-cluster layout with course tags inside each cluster.
+       ============================================================ */
+    .teach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .teach-cluster {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: box-shadow var(--transition);
+    }
+    .teach-cluster:hover { box-shadow: var(--shadow); }
+    .teach-cluster-head {
+      background: var(--dark);
+      padding: 14px 20px;
+    }
+    .teach-cluster-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 3px;
+    }
+    .teach-cluster-title {
+      font-family: var(--font-head);
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .teach-cluster-body {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .teach-item {
+      font-size: 13.5px;
+      color: var(--text-2);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+    .teach-item::before {
+      content: '→';
+      color: var(--teal);
+      font-size: 12px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Delivery formats row below clusters */
+    .formats-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 20px 24px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .formats-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-right: 8px;
+    }
+    .format-tag {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--dark);
+      background: var(--bg);
+      border: 1px solid var(--border-dark);
+      padding: 5px 14px;
+      border-radius: 100px;
+    }
+
+
+    /* ============================================================
+       SECTION: CONTENT AND WRITING
+       Two-column: left = LinkedIn posts, right = GitHub repos
+       ============================================================ */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .content-col-title {
+      font-family: var(--font-head);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .content-col-title .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+    .content-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      transition: padding-left var(--transition);
+    }
+    .content-item:hover { padding-left: 6px; }
+    .content-item:last-child { border-bottom: none; }
+    .content-item-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .content-item-meta {
+      font-size: 12px;
+      color: var(--text-3);
+      font-family: var(--font-mono);
+    }
+    .content-item a { transition: color var(--transition); }
+    .content-item a:hover .content-item-title { color: var(--teal); }
+
+    /* Repo cards - slightly different treatment */
+    .repo-item {
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      transition: all var(--transition);
+      background: var(--bg);
+    }
+    .repo-item:hover {
+      border-color: var(--teal);
+      background: var(--teal-light);
+    }
+    .repo-item-title {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .repo-item-desc {
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+
+    /* ============================================================
+       SECTION: TESTIMONIALS
+       Cards in a 2x2 grid. Each card has the quote, author name,
+       and role. All 4 recommendations are kept as requested.
+       ============================================================ */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .testimonial-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      position: relative;
+      transition: box-shadow var(--transition);
+    }
+    .testimonial-card:hover { box-shadow: var(--shadow); }
+
+    /* Large quotation mark */
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 16px; right: 20px;
+      font-family: var(--font-head);
+      font-size: 64px;
+      line-height: 1;
+      color: var(--border);
+      font-weight: 800;
+    }
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.72;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    /* Highlight key words within testimonials */
+    .testimonial-text strong {
+      color: var(--dark);
+      font-weight: 600;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .testimonial-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+    .testimonial-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--text-3);
+      line-height: 1.4;
+    }
+
+
+    /* ============================================================
+       SECTION: CONTACT
+       Two columns: left = info + what to expect, right = form.
+       The form uses Formspree (free tier, no backend needed).
+       To activate: replace YOUR_FORM_ID in the form action URL.
+       ============================================================ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .contact-info-title {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .contact-info-text {
+      font-size: 15px;
+      color: var(--text-2);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    /* Two "paths" to contact */
+    .contact-path {
+      padding: 16px;
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+    }
+    .contact-path-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 4px;
+    }
+    .contact-path-text {
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .contact-link-item {
+      font-size: 13.5px;
+      color: var(--text-2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .contact-link-item a {
+      color: var(--teal);
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+    .contact-link-item a:hover { color: var(--teal-dark); }
+
+    /* Contact form styles */
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .form-input,
+    .form-select,
+    .form-textarea {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text);
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      width: 100%;
+    }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(0,180,216,0.10);
+    }
+    .form-textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%;
+      padding: 13px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 8px;
+    }
+
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer {
+      background: var(--dark);
+      padding: 40px 0;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+    }
+    .footer-logo span { color: var(--teal); }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--teal); }
+    .footer-copy { font-size: 12px; }
+
+
+    /* ============================================================
+       RESPONSIVE - basic mobile handling
+       ============================================================ */
+    @media (max-width: 860px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .teach-grid { grid-template-columns: 1fr; }
+      .content-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .proof-strip-inner { flex-wrap: wrap; gap: 16px; }
+      .proof-item + .proof-item { border-left: none; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       Smooth-scroll links to each section anchor.
+       ============================================================ -->
+  <nav class="nav" id="main-nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="nav-logo">Gajendra<span>.</span></div>
+        <ul class="nav-links">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#writing">Writing</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact"><button class="btn btn-primary">Get in Touch</button></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       SECTION: HERO
+       The first thing every visitor sees. Dual CTAs - one for
+       training enquiries, one for project/consulting work.
+       ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-inner">
+
+        <div class="hero-left">
+          <div class="hero-badge">Available for Training and Projects</div>
+
+          <h1 class="hero-name">Gajendra Sharma</h1>
+          <p class="hero-role">AI Engineer + GenAI Trainer</p>
+
+          <p class="hero-desc">
+            I build production AI systems and teach practitioners how to build them.
+            300+ hours of live training delivered. Every session taught from real
+            deployment experience, not slides.
+          </p>
+
+          <div class="hero-ctas">
+            <!-- Primary CTA: for EdTech L&D managers -->
+            <a href="#contact" class="btn btn-teal">Hire me as a Trainer</a>
+            <!-- Secondary CTA: for engineering clients -->
+            <a href="#projects" class="btn btn-outline">View Projects</a>
+          </div>
+
+          <!-- Social links - secondary, for visitors who want to verify -->
+          <div class="hero-socials">
+            <a href="https://linkedin.com/in/gajendrasharma-work" target="_blank" rel="noopener">
+              ↗ LinkedIn
+            </a>
+            <a href="https://github.com/gajendrasharma-ai" target="_blank" rel="noopener">
+              ↗ GitHub
+            </a>
+            <a href="https://medium.com/@gajendrasharmawork" target="_blank" rel="noopener">
+              ↗ Medium
+            </a>
+            <a href="mailto:gajendrasharmawork@gmail.com">
+              ↗ Email
+            </a>
+          </div>
+        </div>
+
+        <!-- Stats card - visible on desktop, hidden on mobile -->
+        <div class="hero-card">
+          <div class="hero-card-title">// at a glance</div>
+          <div class="stat-item">
+            <div class="stat-number">300+</div>
+            <div class="stat-label">Hours of live AI training delivered</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">3+</div>
+            <div class="stat-label">Years shipping production AI systems</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Production LLM systems deployed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">3,100+</div>
+            <div class="stat-label">LinkedIn followers, Indian AI community</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Technical posts on LinkedIn and Medium</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PROOF STRIP
+       A quick-scan bar of key numbers between hero and projects.
+       ============================================================ -->
+  <div class="proof-strip">
+    <div class="container">
+      <div class="proof-strip-inner">
+        <div class="proof-item">
+          <div class="proof-num">80<span>%</span></div>
+          <div class="proof-desc">Reduction in report generation time</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-num">90<span>%</span></div>
+          <div class="proof-desc">Manual QC effort eliminated</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-num">60<span>%</span></div>
+          <div class="proof-desc">Faster content discovery</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-num">86.5<span>%</span></div>
+          <div class="proof-desc">Recall@5 on ECCN classifier</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-num">15<span>%</span></div>
+          <div class="proof-desc">Lift in course completion rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       SECTION: PROJECTS
+       Four production systems. Each card leads with the outcome
+       number because that's what engineering clients and EdTech
+       buyers both care about most.
+       ============================================================ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">// production work</div>
+        <h2 class="section-title">What I've <span>Built</span></h2>
+        <p class="section-subtitle">
+          Four systems shipped to real users. Numbers are from production,
+          not benchmarks.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- PROJECT 1 -->
+        <div class="project-card">
+          <div class="project-metric">80%</div>
+          <div class="project-metric-label">reduction in report generation time</div>
+          <h3 class="project-title">Text-to-SQL Conversational Analytics Assistant</h3>
+          <p class="project-problem">
+            50+ non-technical business users at Great Learning needed to query databases
+            without writing SQL. Built a conversational interface that translates plain English
+            questions into accurate SQL queries and returns formatted results.
+          </p>
+          <div class="project-note">
+            <strong>What I learned in production</strong>
+            Ambiguous column names caused silent wrong answers. Added a schema clarification
+            layer that asks for confirmation before running queries on ambiguous tables.
+          </div>
+          <div class="stack-tags">
+            <span class="stack-tag">LangChain</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">FAISS</span>
+            <span class="stack-tag">Streamlit</span>
+            <span class="stack-tag">OpenAI</span>
+          </div>
+          <a href="https://github.com/gajendrasharma-ai" target="_blank" rel="noopener" class="project-link">
+            View on GitHub ↗
+          </a>
+        </div>
+
+        <!-- PROJECT 2 -->
+        <div class="project-card">
+          <div class="project-metric">60%</div>
+          <div class="project-metric-label">faster content discovery + 15% course completion lift</div>
+          <h3 class="project-title">RAG-based Personalised Study Assistant</h3>
+          <p class="project-problem">
+            Learners at Great Learning were spending too long hunting for relevant content
+            across lecture transcripts. Built a production RAG pipeline with semantic chunking
+            and context-aware retrieval over indexed course material.
+          </p>
+          <div class="project-note">
+            <strong>What I learned in production</strong>
+            Fixed-size chunking caused 23% retrieval degradation on long-form content.
+            Re-architected to semantic chunking, which resolved it.
+          </div>
+          <div class="stack-tags">
+            <span class="stack-tag">LangGraph</span>
+            <span class="stack-tag">ChromaDB</span>
+            <span class="stack-tag">Gemini</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">Docker</span>
+          </div>
+          <a href="https://github.com/gajendrasharma-ai" target="_blank" rel="noopener" class="project-link">
+            View on GitHub ↗
+          </a>
+        </div>
+
+        <!-- PROJECT 3 -->
+        <div class="project-card">
+          <div class="project-metric">90%</div>
+          <div class="project-metric-label">of manual QC effort eliminated</div>
+          <h3 class="project-title">Multi-modal Mentor Quality Auditing System</h3>
+          <p class="project-problem">
+            Reviewing mentor session recordings manually was slow, inconsistent, and
+            impossible to scale. Built a system that transcribes long-form sessions and
+            evaluates them against a rubric using LLM-based scoring.
+          </p>
+          <div class="project-note">
+            <strong>What I learned in production</strong>
+            LLM rubric scores drifted across sessions when the prompt wasn't anchored
+            with scored examples. Added few-shot calibration examples per rubric dimension.
+          </div>
+          <div class="stack-tags">
+            <span class="stack-tag">Whisper</span>
+            <span class="stack-tag">LangChain</span>
+            <span class="stack-tag">GPT-4</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">Python</span>
+          </div>
+          <a href="https://github.com/gajendrasharma-ai" target="_blank" rel="noopener" class="project-link">
+            View on GitHub ↗
+          </a>
+        </div>
+
+        <!-- PROJECT 4 -->
+        <div class="project-card">
+          <div class="project-metric">86.5%</div>
+          <div class="project-metric-label">Recall@5 achieved, up from 65%</div>
+          <h3 class="project-title">ECCN Trade Compliance RAG Classifier</h3>
+          <p class="project-problem">
+            Classifying export-controlled items under ECCN codes required deep regulatory
+            knowledge and was error-prone manually. Built a constrained reasoning RAG
+            system using BGE embeddings, FAISS, and Gemini with re-ranking.
+          </p>
+          <div class="project-note">
+            <strong>What I learned in production</strong>
+            Semantic similarity alone wasn't enough for regulatory precision. Adding a
+            re-ranking layer over retrieved candidates lifted Recall@5 by 21.5 points.
+          </div>
+          <div class="stack-tags">
+            <span class="stack-tag">FAISS</span>
+            <span class="stack-tag">BGE Embeddings</span>
+            <span class="stack-tag">Gemini</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">Python</span>
+          </div>
+          <a href="https://github.com/gajendrasharma-ai" target="_blank" rel="noopener" class="project-link">
+            View on GitHub ↗
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION: WHAT I TEACH
+       Three clusters matching the brochure exactly for consistency.
+       Delivery formats in a pill-tag row below the clusters.
+       ============================================================ -->
+  <section class="section section-alt" id="teaching">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">// training and workshops</div>
+        <h2 class="section-title">What I <span>Teach</span></h2>
+        <p class="section-subtitle">
+          300+ hours delivered across EdTech platforms, colleges, and corporate teams.
+          Every topic taught from production deployment experience.
+        </p>
+      </div>
+
+      <div class="teach-grid">
+
+        <!-- CLUSTER 1 -->
+        <div class="teach-cluster">
+          <div class="teach-cluster-head">
+            <div class="teach-cluster-label">Track 01</div>
+            <div class="teach-cluster-title">Foundations</div>
+          </div>
+          <div class="teach-cluster-body">
+            <div class="teach-item">Python for AI</div>
+            <div class="teach-item">Machine Learning</div>
+            <div class="teach-item">Deep Learning</div>
+            <div class="teach-item">Natural Language Processing</div>
+            <div class="teach-item">Statistics for AI</div>
+          </div>
+        </div>
+
+        <!-- CLUSTER 2 -->
+        <div class="teach-cluster">
+          <div class="teach-cluster-head">
+            <div class="teach-cluster-label">Track 02</div>
+            <div class="teach-cluster-title">Generative AI and LLM Engineering</div>
+          </div>
+          <div class="teach-cluster-body">
+            <div class="teach-item">Generative AI and Prompt Engineering</div>
+            <div class="teach-item">RAG Systems (Beginner to Production)</div>
+            <div class="teach-item">LLM Orchestration</div>
+            <div class="teach-item">LangChain and LangGraph</div>
+            <div class="teach-item">Text-to-SQL with LLMs</div>
+            <div class="teach-item">Vector Databases (FAISS, ChromaDB)</div>
+            <div class="teach-item">AI System Evaluation with RAGAS</div>
+            <div class="teach-item">Multi-modal AI</div>
+          </div>
+        </div>
+
+        <!-- CLUSTER 3 -->
+        <div class="teach-cluster">
+          <div class="teach-cluster-head">
+            <div class="teach-cluster-label">Track 03</div>
+            <div class="teach-cluster-title">Agentic AI and Automation</div>
+          </div>
+          <div class="teach-cluster-body">
+            <div class="teach-item">Agentic AI and Multi-Agent Systems</div>
+            <div class="teach-item">CrewAI</div>
+            <div class="teach-item">FastAPI for AI Services</div>
+            <div class="teach-item">n8n Workflow Automation</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Delivery formats -->
+      <div class="formats-row">
+        <span class="formats-label">Formats</span>
+        <span class="format-tag">Live Online Session</span>
+        <span class="format-tag">Classroom Workshop</span>
+        <span class="format-tag">Half-Day Intensive</span>
+        <span class="format-tag">Full-Day Intensive</span>
+        <span class="format-tag">Capstone Mentoring</span>
+        <span class="format-tag">Hackathon Judging</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION: CONTENT AND WRITING
+       Left: top LinkedIn and Medium posts.
+       Right: GitHub tutorial repos.
+       Purpose: shows EdTech buyers you can explain complex ideas
+       clearly, which is the core skill of a trainer.
+       ============================================================ -->
+  <section class="section" id="writing">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">// content and writing</div>
+        <h2 class="section-title">How I <span>Explain</span> Things</h2>
+        <p class="section-subtitle">
+          50+ posts on LinkedIn and Medium. The goal is always the same: make
+          complex systems explainable without stripping out what makes them hard.
+        </p>
+      </div>
+
+      <div class="content-grid">
+
+        <!-- Left: Posts -->
+        <div>
+          <div class="content-col-title">
+            <span class="dot"></span>
+            LinkedIn and Medium Posts
+          </div>
+
+          <!-- TO UPDATE: replace href with actual post URLs -->
+          <div class="content-item">
+            <a href="https://linkedin.com/in/gajendrasharma-work" target="_blank" rel="noopener">
+              <div class="content-item-title">Why Fixed-Size Chunking Fails in Production RAG Systems</div>
+              <div class="content-item-meta">LinkedIn · AI Engineering</div>
+            </a>
+          </div>
+          <div class="content-item">
+            <a href="https://medium.com/@gajendrasharmawork" target="_blank" rel="noopener">
+              <div class="content-item-title">LangGraph vs LangChain: When to Use Which</div>
+              <div class="content-item-meta">Medium · LLM Engineering</div>
+            </a>
+          </div>
+          <div class="content-item">
+            <a href="https://linkedin.com/in/gajendrasharma-work" target="_blank" rel="noopener">
+              <div class="content-item-title">How I Evaluate RAG Pipelines Using RAGAS</div>
+              <div class="content-item-meta">LinkedIn · RAG Systems</div>
+            </a>
+          </div>
+          <div class="content-item">
+            <a href="https://medium.com/@gajendrasharmawork" target="_blank" rel="noopener">
+              <div class="content-item-title">Building a Multi-Agent Research Pipeline with LangGraph</div>
+              <div class="content-item-meta">Medium · Agentic AI</div>
+            </a>
+          </div>
+          <div class="content-item">
+            <a href="https://linkedin.com/in/gajendrasharma-work" target="_blank" rel="noopener">
+              <div class="content-item-title">5 Prompt Engineering Patterns That Actually Work in Production</div>
+              <div class="content-item-meta">LinkedIn · Prompt Engineering</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: GitHub repos -->
+        <div>
+          <div class="content-col-title">
+            <span class="dot"></span>
+            GitHub Tutorial Repositories
+          </div>
+
+          <!-- TO UPDATE: replace href with actual repo URLs -->
+          <a href="https://github.com/gajendrasharma-ai" target="_blank" rel="noopener">
+            <div class="repo-item">
+              <div class="repo-item-title">langgraph-tutorial-series</div>
+              <div class="repo-item-desc">
+                Karpathy-style educational repo covering LangGraph from nodes and edges
+                to production multi-agent architectures.
+              </div>
+            </div>
+          </a>
+          <a href="https://github.com/gajendrasharma-ai" target="_blank" rel="noopener">
+            <div class="repo-item">
+              <div class="repo-item-title">deep-learning-from-scratch</div>
+              <div class="repo-item-desc">
+                Deep Learning series built for practitioners. Covers backprop,
+                CNNs, transformers with annotated code.
+              </div>
+            </div>
+          </a>
+          <a href="https://github.com/gajendrasharma-ai" target="_blank" rel="noopener">
+            <div class="repo-item">
+              <div class="repo-item-title">rag-production-patterns</div>
+              <div class="repo-item-desc">
+                Companion repo to the RAG in Production content series. Runnable
+                examples for each architecture pattern.
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION: TESTIMONIALS
+       All 4 recommendations kept as requested. Paraphrased where
+       needed to remove awkward phrasing and align with current
+       positioning. Update or replace these at any time.
+       ============================================================ -->
+  <section class="section section-alt" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">// recommendations</div>
+        <h2 class="section-title">What People <span>Say</span></h2>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <!-- TESTIMONIAL 1: Kapil Sharma -->
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            What I love about Gajendra is how he responds to feedback. He not only takes it
+            positively but acts on it in a short span of time to show <strong>drastic
+            improvements</strong>. For me, that was a sign of an individual who is
+            <strong>willing to un-learn</strong>, re-learn, and grow. I am also impressed
+            with his maturity. He will certainly be an asset to any team and can be
+            groomed to lead people.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">KS</div>
+            <div>
+              <div class="testimonial-name">Kapil Sharma</div>
+              <div class="testimonial-role">Founder, MindStory Creations Pvt Ltd</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TESTIMONIAL 2: Gaurav Siwal (strongest for AI positioning) -->
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            I found Gajendra <strong>coachable</strong>, hard working, enthusiastic, and
+            curious. His enthusiasm struck me the most. From asking questions to know more,
+            to constantly practicing and improving his craft. He is a good
+            <strong>communicator</strong> who articulates his points well. He has a
+            learning mindset that will help him grow not only in his career but also
+            in his life.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">GS</div>
+            <div>
+              <div class="testimonial-name">Gaurav Siwal</div>
+              <div class="testimonial-role">Data Scientist, Great Learning</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TESTIMONIAL 3: Akshay Nangalia -->
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            What stands out about Gajendra is his <strong>problem-solving</strong> ability.
+            He dives deep into challenges, breaking them down step by step while evaluating
+            all possibilities. Beyond his work skills, Gajendra brings a refreshing vibe
+            with his <strong>positive attitude</strong>, making it an enjoyable experience
+            to work with him.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AN</div>
+            <div>
+              <div class="testimonial-name">Akshay Nangalia</div>
+              <div class="testimonial-role">Ecommerce Executive, WISHKEY Retail LLP</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TESTIMONIAL 4: Payal Agarwal -->
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            Gajendra has always been a fast and avid learner, with an <strong>eye for
+            detail</strong> and quite an unconventional approach towards understanding and
+            <strong>explaining things</strong>. His dedication and positive approach towards
+            any subject matter helps him get a firm grip over it. His managing skills and
+            easily approachable nature make him one of the best colleagues to work with.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">PA</div>
+            <div>
+              <div class="testimonial-name">Payal Agarwal</div>
+              <div class="testimonial-role">Associate, Vinod Kothari and Company</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION: CONTACT
+       Two paths: training enquiries and project/consulting work.
+       Form powered by Formspree (free, no backend needed).
+
+       TO ACTIVATE THE FORM:
+       1. Go to https://formspree.io and create a free account
+       2. Create a new form and copy your form ID
+       3. Replace "YOUR_FORM_ID" in the action attribute below
+          with your actual ID, e.g. "xpwzgkjd"
+       ============================================================ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">// get in touch</div>
+        <h2 class="section-title">Let's <span>Work Together</span></h2>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- Left: info -->
+        <div>
+          <p class="contact-info-text">
+            Two ways I can help. Pick the one that fits and I will get back
+            within 24 hours.
+          </p>
+
+          <div class="contact-path">
+            <div class="contact-path-label">For Training and Workshops</div>
+            <div class="contact-path-text">
+              EdTech platforms, colleges, and corporate teams. Tell me the topic,
+              format, and timeline and I will share availability and a rate.
+            </div>
+          </div>
+
+          <div class="contact-path">
+            <div class="contact-path-label">For Projects and Consulting</div>
+            <div class="contact-path-text">
+              RAG systems, Agentic AI pipelines, Text-to-SQL, LLM integrations.
+              Share what you're building and where you're stuck.
+            </div>
+          </div>
+
+          <div class="contact-links">
+            <div class="contact-link-item">
+              Email:
+              <a href="mailto:gajendrasharmawork@gmail.com">gajendrasharmawork@gmail.com</a>
+            </div>
+            <div class="contact-link-item">
+              LinkedIn:
+              <a href="https://linkedin.com/in/gajendrasharma-work" target="_blank" rel="noopener">
+                gajendrasharma-work
+              </a>
+            </div>
+            <div class="contact-link-item">
+              Consulting:
+              <a href="https://topmate.io" target="_blank" rel="noopener">
+                Book a session on Topmate
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <!-- Replace YOUR_FORM_ID with your Formspree form ID to activate -->
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Name</label>
+              <input class="form-input" type="text" id="name" name="name"
+                placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" type="email" id="email" name="email"
+                placeholder="your@email.com" required />
+            </div>
+          </div>
+
+          <!-- Enquiry type dropdown helps Gajendra prioritise and route replies -->
+          <div class="form-group">
+            <label class="form-label" for="type">What do you need?</label>
+            <select class="form-select" id="type" name="type">
+              <option value="">Select an option</option>
+              <option value="training">Training or Workshop</option>
+              <option value="capstone">Capstone Mentoring</option>
+              <option value="project">Freelance Project</option>
+              <option value="consulting">1:1 Consulting Session</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Tell me more</label>
+            <textarea class="form-textarea" id="message" name="message"
+              placeholder="Topic, format, timeline, or what you're building..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-teal form-submit">Send Message</button>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Gajendra<span>.</span></div>
+        <ul class="footer-links">
+          <li><a href="https://linkedin.com/in/gajendrasharma-work" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/gajendrasharma-ai" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://medium.com/@gajendrasharmawork" target="_blank" rel="noopener">Medium</a></li>
+          <li><a href="mailto:gajendrasharmawork@gmail.com">Email</a></li>
+        </ul>
+        <div class="footer-copy">gajendrasharma-ai.github.io</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+       Two small behaviours only:
+       1. Add "scrolled" class to nav when page scrolls (for shadow)
+       2. Smooth-scroll polyfill for older browsers
+       ============================================================ -->
+  <script>
+    // Nav shadow on scroll
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
+
+</body>
+</html>
